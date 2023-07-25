@@ -8,9 +8,12 @@ app.use(express.json());
 const port = 3000;
 
 // Gunakan rute-rute yang telah didefinisikan
-const setupVideoRoutes = require("./src/routes/video.route");
-const videoRoutes = setupVideoRoutes();
+const SetupVideoRoutes = require("./src/routes/video.route");
+const videoRoutes = SetupVideoRoutes();
+const setupProductRoutes = require("./src/routes/product.route");
+const productRoutes = setupProductRoutes();
 app.use("/videos", videoRoutes);
+app.use("/products", productRoutes);
 
 // Jalankan aplikasi Express pada port yang ditentukan
 app.listen(port, () => {
