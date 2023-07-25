@@ -1,15 +1,19 @@
 const { default: mongoose } = require("mongoose");
 
-const videoSchema = new mongoose.Schema({
-  urlImageThumbnail: {
+const userSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true,
+    min: 6,
+    max: 255,
   },
-  videoUrl: {
+  username: {
     type: String,
     required: true,
+    min: 6,
+    max: 255,
   },
-  title: {
+  password: {
     type: String,
     required: true,
     min: 6,
@@ -17,6 +21,4 @@ const videoSchema = new mongoose.Schema({
   },
 });
 
-const Video = mongoose.model("Video", videoSchema);
-
-module.exports = Video;
+const User = mongoose.model("User", userSchema);
