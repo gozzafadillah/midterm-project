@@ -1,10 +1,12 @@
 const express = require("express");
+const VideoController = require("../controllers/video.controller");
 
-function setupVideoRoutes() {
+function SetupVideoRoutes() {
   const router = express.Router();
-  router.get("/", (_, res) => {
-    res.send("Hello World!");
-  });
+  const videoController = new VideoController();
+  router.get("/", videoController.getAllVideos.bind(videoController));
+  router.get("/:id", videoController.getVideoById.bind(videoController));
+  router.post("/", videoController.createVideo.bind(videoController));
   return router;
 }
-module.exports = setupVideoRoutes;
+module.exports = SetupVideoRoutes;
