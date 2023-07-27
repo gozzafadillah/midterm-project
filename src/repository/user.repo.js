@@ -23,6 +23,15 @@ class UserRepository {
     }
   }
 
+  async getUserByEmail(email) {
+    try {
+      const user = await this.users.findOne({ email });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async store(user) {
     try {
       const newUser = await this.users.create(user);

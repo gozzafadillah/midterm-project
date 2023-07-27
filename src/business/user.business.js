@@ -25,6 +25,15 @@ class UserBusiness {
     }
   }
 
+  async getUserByEmail(email) {
+    try {
+      const user = await this.userRepository.getUserByEmail(email);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createUser(user) {
     try {
       user.password = await bcrypt.hash(user.password, 10);

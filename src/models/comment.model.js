@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const commentSchema = new Schema({
+const commentSchema = new mongoose.Schema({
   videoId: {
     type: String,
     required: true,
@@ -16,6 +16,10 @@ const commentSchema = new Schema({
   comment: {
     type: String,
     required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
   },
 });
 
