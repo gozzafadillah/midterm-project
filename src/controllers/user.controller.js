@@ -17,21 +17,29 @@ class UserController {
   }
 
   async createUser(req, res) {
-    const { body: user } = req;
-    const createdUser = await this.userBusiness.createUser(user);
-    res.status(201).json(createdUser);
+    try {
+      const { body: user } = req;
+      const createdUser = await this.userBusiness.createUser(user);
+      res.status(201).json(createdUser);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 
   async login(req, res) {
-    const { body: user } = req;
-    const token = await this.userBusiness.login(user);
-    const response = {
-      token,
-      user: {
-        email: user.email,
-      },
-    };
-    res.json({ response });
+    try {
+      const { body: user } = req;
+      const token = await this.userBusiness.login(user);
+      const response = {
+        token,
+        user: {
+          email: user.email,
+        },
+      };
+      res.json({ response });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 }
 

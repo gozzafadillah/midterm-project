@@ -24,6 +24,22 @@ class ProductController {
     const createdProduct = await this.productService.createProduct(product);
     res.status(201).json(createdProduct);
   }
+
+  async addByVideoId(req, res) {
+    try {
+      const { videoId } = req.params;
+      const { body } = req;
+      body.videoId = videoId;
+      const addProduct = await this.productService.createProduct(body);
+      const response = {
+        message: "Add product successfully",
+        data: addProduct,
+      };
+      res.json(response);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = ProductController;

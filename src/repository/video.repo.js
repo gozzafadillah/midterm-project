@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const videoSchema = require("../models/video.model");
 
 class VideoRepository {
@@ -19,12 +18,12 @@ class VideoRepository {
       const video = await this.videos.findById(id);
       return video;
     } catch (error) {
+      console.error("Error saat mencari video berdasarkan ID:", error);
       throw error;
     }
   }
   async store(video) {
     try {
-      video.videoId = new mongoose.Types.ObjectId();
       const newVideo = await this.videos.create(video);
       return newVideo;
     } catch (error) {

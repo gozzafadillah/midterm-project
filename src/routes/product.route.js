@@ -4,7 +4,10 @@ const ProductController = require("../controllers/product.controller");
 function SetupProductRoute() {
   const router = express.Router();
   const productController = new ProductController();
-  router.get("/", productController.getProducts.bind(productController));
+  router.post(
+    "/:videoId",
+    productController.addByVideoId.bind(productController)
+  );
 
   return router;
 }

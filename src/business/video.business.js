@@ -16,7 +16,11 @@ class VideoBusiness {
   async getVideoById(id) {
     try {
       const video = await this.videoRepository.getVideoById(id);
-      return video;
+      if (video) {
+        return video;
+      } else {
+        throw new Error("Video tidak ditemukan");
+      }
     } catch (error) {
       throw error;
     }

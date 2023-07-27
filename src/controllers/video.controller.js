@@ -45,8 +45,11 @@ class VideoController {
       const video = await this.videoService.createVideo(req.body);
       req.body.product.videoId = video._id;
       await this.productService.createProduct(req.body.product);
-      video.message = "Create video successfully";
-      res.status(201).json(video);
+      const response = {
+        message: "Create video successfully",
+        video: video,
+      };
+      res.status(201).json(response);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
