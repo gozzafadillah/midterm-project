@@ -15,6 +15,14 @@ Pada midterm ini saya membuat restapi dengan integrasi mongoDB untuk databasenya
 2. insert `.env` database and jwt key
 3. and `npm run dev` for run a server
 
+## Database Structure
+
+![img erd](./erd-midterm.png)
+
+- Videos 1 - N Comments
+- videos 1 - N Products
+- User 1 - N Comments
+
 # API List
 
 ## Videos
