@@ -20,9 +20,12 @@ class UserController {
     try {
       const { body: user } = req;
       const createdUser = await this.userBusiness.createUser(user);
+      const response = {
+        message: "User created successfully",
+      };
       res.status(201).json(createdUser);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     }
   }
 
