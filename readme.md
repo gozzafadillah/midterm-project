@@ -24,9 +24,8 @@ Pada midterm ini saya membuat restapi dengan integrasi mongoDB untuk databasenya
 ```yaml
 {
 title: string
-description: string
-url: string
-created_at: datetime
+videoUrl: string
+urlImageThumbnail: string
 }
 ```
 
@@ -35,31 +34,50 @@ created_at: datetime
 
   - **_URL Params_**
     None
-    Headers
+  - **_Headers_**
     None
-    Success Response:
+  - **_Success Response:_**
     `Code: 200`
-    Content:
+  - **_Content:_**
 
-        ```yml
-        {
-          videos: [
-            {
-            title: "Video Title 1",
-            description: "Video Description 1",
-            url: "https://example.com/video1",
-            created_at: "2023-07-28T12:34:56Z"
-            },
-            {
-            title: "Video Title 2",
-            description: "Video Description 2",
-            url: "https://example.com/video2",
-            created_at: "2023-07-28T13:45:00Z"
-            }
-            // More videos...
-            ]
-        }
-        ```
+    ```yml
+    {
+      "count": 5,
+      "videos":
+        [
+          {
+            "videoID": "64bfe42736a3ba8369906eb3",
+            "title": "cek",
+            "urlImageThumbnail": "cek.jpg",
+            "videoUrl": "cek.mp4",
+          },
+          {
+            "videoID": "64bff0fbdb78f8cc5dd7609d",
+            "title": "thumbnail-2",
+            "urlImageThumbnail": "cek2.jpg",
+            "videoUrl": "ccek.mp4",
+          },
+          {
+            "videoID": "64c2928ed8d63c0aab1fb2c7",
+            "title": "thumbnail-4",
+            "urlImageThumbnail": "cek3.jpg",
+            "videoUrl": "cek3.mp4",
+          },
+          {
+            "videoID": "64c29343d8d63c0aab1fb2ca",
+            "title": "thumbnail-4",
+            "urlImageThumbnail": "cek3.jpg",
+            "videoUrl": "cek3.mp4",
+          },
+          {
+            "videoID": "64c29b2f6b760b4aa7d20ce3",
+            "title": "Peralatan Dapur",
+            "urlImageThumbnail": "gambar-thumbnail.jpg",
+            "videoUrl": "peralatan-video.yt",
+          },
+        ],
+    }
+    ```
 
 - **_POST /videos_**
   Creates a new video in the system.
@@ -68,7 +86,7 @@ created_at: datetime
     None
   - **_Data Params_**
     ```yml
-    { "title": string, "description": string, "url": string }
+    { "title": string, "urlImageThumbnail": string, "videoUrl": string }
     ```
   - **_Headers_**
   - **_Content-Type: application/json_**
@@ -92,10 +110,9 @@ created_at: datetime
   - **_Content:_**
     ```yml
     {
-      title: "Video Title",
-      description: "Video Description",
-      url: "https://example.com/video",
-      created_at: "2023-07-28T12:34:56Z",
+      "message": "Get video successfully",
+      "video": { "title": "thumbnail-4", "videoUrl": "cek3.mp4" },
+      "product": [products],
     }
     ```
 
@@ -108,7 +125,6 @@ created_at: datetime
 username: string
 email: string
 password: string
-created_at: datetime
 }
 ```
 
@@ -148,32 +164,31 @@ created_at: datetime
 }
 `
 
-                        - **_Headers_**
-                        - **_Content-Type:_** application/json
-                        - **_Success Response:_**
-                        - **_Code:_** 200
-                        - **_Content:_**
+                                                                                                - **_Headers_**
+                                                                                                - **_Content-Type:_** application/json
+                                                                                                - **_Success Response:_**
+                                                                                                - **_Code:_** 200
+                                                                                                - **_Content:_**
 
-                        ```yml
-                        { message: "User signed in successfully" }
-                        ```
+                                                                                                ```yml
+                                                                                                { message: "User signed in successfully" }
+                                                                                                ```
 
-                        - **_Error Response:_**
-                        - **_Code:_** 401
-                        - **_Content:_** { "error": "Invalid credentials" }
+                                                                                                - **_Error Response:_**
+                                                                                                - **_Code:_** 401
+                                                                                                - **_Content:_** { "error": "Invalid credentials" }
 
-                        ## Comments
+                                                                                                ## Comments
 
-                        Comment object
+                                                                                                Comment object
 
-                        ```yml
-                        {
-                        text: string
-                        user_id: string
-                        video_id: string
-                        created_at: datetime
-                        }
-                        ```
+                                                                                                ```yml
+                                                                                                {
+                                                                                                comment: string
+                                                                                                username: string
+                                                                                                email: string
+                                                                                                }
+                                                                                                ```
 
 ## Comments
 
@@ -185,11 +200,11 @@ created_at: datetime
       - **_Data Params_**
 
       ```yml
-      { "text": string, "user_id": string, "video_id": string }
+      { "comment": string }
       ```
 
   - **_Headers_**
-    - Authorization: `Bearer <token>`
+    - none
   - **_Content-Type:_** application/json
   - **_Success Response:_**
   - **_Code:_** 200
@@ -214,21 +229,21 @@ created_at: datetime
     {
     comments: [
     {
-    text: "Comment 1",
-    user_id: "user1",
-    video_id: "video1",
-    created_at: "2023-07-28T12:34:56Z"
+    comment: "Comment 1",
+    username: "user1",
+    email: "video1",
     },
     {
-    text: "Comment 2",
-    user_id: "user2",
-    video_id: "video1",
-    created_at: "2023-07-28T13:45:00Z"
+    comment: "Comment 2",
+    username: "user2",
+    email: "video1",
     }
     // More comments...
     ]
     }
   ```
+
+## Product
 
 - **POST /product/:videoId**
   Creates a new product related to a specific video.
@@ -242,6 +257,7 @@ created_at: datetime
   ```
 
   - **_Headers_**
+    - Authorization: `Bearer <token>`
   - **_Content-Type:_** application/json
   - **_Success Response:_**
     Code: 200
@@ -251,7 +267,3 @@ created_at: datetime
         message: "Product created successfully",
       }
     ```
-
-```
-
-```
