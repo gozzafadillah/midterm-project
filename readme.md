@@ -164,31 +164,32 @@ password: string
 }
 `
 
-                                                                                                - **_Headers_**
-                                                                                                - **_Content-Type:_** application/json
-                                                                                                - **_Success Response:_**
-                                                                                                - **_Code:_** 200
-                                                                                                - **_Content:_**
+                                                                                                        - **_Headers_**
+                                                                                                        - **_Content-Type:_** application/json
+                                                                                                        - **_Success Response:_**
+                                                                                                        - **_Code:_** 200
+                                                                                                        - **_Content:_**
 
-                                                                                                ```yml
-                                                                                                { message: "User signed in successfully" }
-                                                                                                ```
+                                                                                                        ```yml
+                                                                                                        { message: "User signed in successfully" }
+                                                                                                        ```
 
-                                                                                                - **_Error Response:_**
-                                                                                                - **_Code:_** 401
-                                                                                                - **_Content:_** { "error": "Invalid credentials" }
+                                                                                                        - **_Error Response:_**
+                                                                                                        - **_Code:_** 401
+                                                                                                        - **_Content:_** { "error": "Invalid credentials" }
 
-                                                                                                ## Comments
+                                                                                                        ## Comments
 
-                                                                                                Comment object
+                                                                                                        Comment object
 
-                                                                                                ```yml
-                                                                                                {
-                                                                                                comment: string
-                                                                                                username: string
-                                                                                                email: string
-                                                                                                }
-                                                                                                ```
+                                                                                                        ```yml
+                                                                                                        {
+                                                                                                        comment: string
+                                                                                                        username: string
+                                                                                                        email: string
+                                                                                                        videoId: string
+                                                                                                        }
+                                                                                                        ```
 
 ## Comments
 
@@ -253,7 +254,7 @@ password: string
   - **_Data Params_**
 
   ```yml
-  { "name": string, "price": number, "description": string }
+  { "videoId": string"name": string, "price": number, "description": string }
   ```
 
   - **_Headers_**
