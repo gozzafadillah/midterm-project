@@ -1,3 +1,20 @@
+## Midterm tokopedia play
+
+Pada midterm ini saya membuat restapi dengan integrasi mongoDB untuk databasenya. Teknologi dan Library yang saya gunakan
+
+- [x] Express.js
+- [x] bcryptjs
+- [x] jsonwebtoken
+- [x] mongoose
+- [x] nodemon
+- [x] dotenv
+
+## How to run app
+
+1. `npm install ` or `npm ci`
+2. insert `.env` database and jwt key
+3. and `npm run dev` for run a server
+
 # API List
 
 ## Videos
@@ -131,32 +148,34 @@ created_at: datetime
 }
 `
 
-                - **_Headers_**
-                - **_Content-Type:_** application/json
-                - **_Success Response:_**
-                - **_Code:_** 200
-                - **_Content:_**
+                        - **_Headers_**
+                        - **_Content-Type:_** application/json
+                        - **_Success Response:_**
+                        - **_Code:_** 200
+                        - **_Content:_**
 
-                ```yml
-                { message: "User signed in successfully" }
-                ```
+                        ```yml
+                        { message: "User signed in successfully" }
+                        ```
 
-                - **_Error Response:_**
-                - **_Code:_** 401
-                - **_Content:_** { "error": "Invalid credentials" }
+                        - **_Error Response:_**
+                        - **_Code:_** 401
+                        - **_Content:_** { "error": "Invalid credentials" }
 
-                ## Comments
+                        ## Comments
 
-                Comment object
+                        Comment object
 
-                ```yml
-                {
-                text: string
-                user_id: string
-                video_id: string
-                created_at: datetime
-                }
-                ```
+                        ```yml
+                        {
+                        text: string
+                        user_id: string
+                        video_id: string
+                        created_at: datetime
+                        }
+                        ```
+
+## Comments
 
 - **_POST /comments_**
   Creates a new comment on a video.
