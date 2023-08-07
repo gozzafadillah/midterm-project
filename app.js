@@ -20,6 +20,9 @@ app.use("/videos", videoRoutes);
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/comments", commentRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 // Jalankan aplikasi Express pada port yang ditentukan
 app.listen(port, () => {
