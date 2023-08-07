@@ -7,10 +7,6 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 const cors = require("cors");
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 // Gunakan rute-rute yang telah didefinisikan
 const SetupVideoRoutes = require("./src/routes/video.route");
@@ -21,11 +17,11 @@ const SetupUserRoutes = require("./src/routes/user.route");
 const userRoutes = SetupUserRoutes();
 const SetupCommentRoutes = require("./src/routes/comment.route");
 const commentRoutes = SetupCommentRoutes();
-app.use("/videos", cors(corsOptions), videoRoutes);
-app.use("/products", cors(corsOptions), productRoutes);
-app.use("/users", cors(corsOptions), userRoutes);
-app.use("/comments", cors(corsOptions), commentRoutes);
-app.get("/", cors(corsOptions), (req, res) => {
+app.use("/videos", cors(), videoRoutes);
+app.use("/products", cors(), productRoutes);
+app.use("/users", cors(), userRoutes);
+app.use("/comments", cors(), commentRoutes);
+app.get("/", cors(), (req, res) => {
   res.send("Hello World!");
 });
 
