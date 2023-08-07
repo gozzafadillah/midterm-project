@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Gunakan rute-rute yang telah didefinisikan
 const SetupVideoRoutes = require("./src/routes/video.route");
@@ -25,6 +25,6 @@ app.get("/", (req, res) => {
 });
 
 // Jalankan aplikasi Express pada port yang ditentukan
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Example app listening on port ${port}`);
 });
